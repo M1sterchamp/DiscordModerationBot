@@ -1,4 +1,4 @@
-# Project Eleven Media - Modular Discord Framework
+Modular Discord Moderation Framework
 
 A professional-grade, white-label Discord bot framework built for high-performance moderation, comprehensive audit logging, and automated security. This bot is designed to be fully portable; all branding and logic can be adjusted through configuration files without touching the source code.
 
