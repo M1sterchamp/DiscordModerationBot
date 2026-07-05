@@ -39,6 +39,7 @@ All customization is done within the `config/` folder. The bot will check for th
 - Enter the **Channel IDs** for each category. 
 - Categories include: `mod`, `members`, `messages`, `voice`, `actions`, `files`, `roles`, and `channels`.
 
+
 ### 3. `permissions.json`
 *Controls who can use the bot.*
 - Add the **Role IDs** of your staff members to the corresponding arrays.
@@ -87,4 +88,55 @@ All customization is done within the `config/` folder. The bot will check for th
 For the moderation tools and the Honeypot trap to function, the **Bot's highest role must be placed above the members it is moderating** in your Server Settings. The bot cannot moderate users who have a higher role than itself.
 
 ---
+
+---
+
+## 🔍 Audit Logging Details
+
+This framework features a comprehensive auditing system. Every event is routed to the specific channel ID defined in `logging.json`.
+
+### 🛡️ Mod Logs (`mod`)
+Logs all staff-initiated moderation actions, including:
+- **Bans, Kicks, & Unbans**.
+- **Mutes (Timeouts) & Unmutes**.
+- **Manual Purges** (including how many messages were deleted and where).
+
+### 👥 Member Logs (`members`)
+Tracks user movement within the server:
+- **User Joined**: Logs the user tag, ID, and their account age (to spot potential alt accounts).
+- **User Left**: Logs when a member leaves or is removed from the server.
+
+### 💬 Message Logs (`messages`)
+Monitors text-based interactions:
+- **Message Edited**: Displays the "Before" and "After" content perfectly alongside the author.
+- **Message Deleted**: Captures the content of a message before it was removed.
+- **Threads**: Logs when threads are created or deleted.
+- **Reactions**: Logs when users add or remove reactions to messages (includes a "Jump to Message" link).
+
+### 📎 File Logs (`files`)
+A specific security layer for attachments:
+- **Attachment Deleted**: If a user deletes a message containing an image, video, or document, the bot recovers the file and attaches it to the log so staff can still view the deleted content.
+
+### 🔊 Voice Logs (`voice`)
+Monitors all voice channel activity:
+- **Join/Leave**: Which user joined/left which channel.
+- **Move**: Tracks when a user moves from one voice channel to another.
+- **Server Actions**: Logs when a user is Server Muted, Deatened, Unmuted, or Undeafened by a moderator.
+
+### 🎫 Action Logs (`actions`)
+Tracks server-wide infrastructure changes:
+- **Invites**: Logs whenever a new invite code is created and who created it.
+- **Channel Creation/Deletion**: Tracks the setup or removal of text and voice channels.
+- **Channel Category Moves**: Logs when a channel is moved from one category to another.
+
+### 🛡️ Role Logs (`roles`)
+Monitors permission and hierarchy changes:
+- **Role Create/Delete**: Tracks when new roles are added or removed.
+- **Role Assignment**: Logs exactly which role was given to or taken from a specific user.
+
+### ⚙️ Channel Logs (`channels`)
+Tracks settings and permission overwrites:
+- **Settings Changed**: Logs name changes or slow-mode updates.
+- **Permissions Updated**: Detects when channel-specific permission overwrites are modified for roles or members.
+- 
 *Developed by Misterchamp.*
